@@ -1,0 +1,24 @@
+{% block ce_srp_list %}
+    <sw-page class="ce-srp-list">
+        {% block ce_srp_list_smart_bar_actions %}
+            <template slot="smart-bar-actions">
+                <sw-button variant="primary" :routerLink="{ name: 'ce.srp.create' }">
+                    Add Row
+                </sw-button>
+            </template>
+        {% endblock %}
+
+        <template slot="content">
+            {% block ce_srp_list_content %}
+                <sw-entity-listing
+                    v-if="entities"
+                    :items="entities"
+                    :repository="repository"
+                    :showSelection="false"
+                    :columns="columns"
+                    detailRoute="ce.srp.detail">
+                </sw-entity-listing>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

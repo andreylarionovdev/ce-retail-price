@@ -1,0 +1,6 @@
+{% sw_extends 'administration/index.html.twig' %}
+
+{% block administration_scripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('administration/js/suggested-retail-price.js') }}"></script>
+{% endblock %}

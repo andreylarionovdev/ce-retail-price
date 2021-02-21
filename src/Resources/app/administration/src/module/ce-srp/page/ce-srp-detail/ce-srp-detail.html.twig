@@ -1,0 +1,49 @@
+{% block ce_srp_detail %}
+    <sw-page class="ce-srp-detail">
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'ce.srp.list' }">
+                Cancel
+            </sw-button>
+
+            <sw-button-process
+                :isLoading="isLoading"
+                :processSuccess="processSuccess"
+                variant="primary"
+                @process-finish="saveFinish"
+                @click="onClickSave">
+                Save
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+            <sw-card-view>
+                <sw-card v-if="entity" :isLoading="isLoading">
+                    <sw-entity-single-select
+                        required
+                        :label="'Target Customer Group'"
+                        v-model="entity.targetCustomerGroupId"
+                        entity="customer_group">
+                    </sw-entity-single-select>
+                    <sw-entity-single-select
+                        required
+                        :label="'Source Customer Group'"
+                        v-model="entity.sourceCustomerGroupId"
+                        entity="customer_group">
+                    </sw-entity-single-select>
+                    <sw-switch-field
+                        :label="'Gross'"
+                        v-model="entity.isGross">
+                    </sw-switch-field>
+                    <sw-switch-field
+                        :label="'Show saved percentage'"
+                        v-model="entity.showSavedPercentage">
+                    </sw-switch-field>
+                    <sw-switch-field
+                        :label="'Consider Pseudoprice'"
+                        v-model="entity.considerPseudoprice">
+                    </sw-switch-field>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}
