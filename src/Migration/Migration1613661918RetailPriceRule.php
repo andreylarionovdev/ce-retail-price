@@ -19,7 +19,7 @@ class Migration1613661918RetailPriceRule extends MigrationStep
               `id` BINARY(16) NOT NULL,
               `target_customer_group_id` BINARY(16) NOT NULL,
               `source_customer_group_id` BINARY(16) NOT NULL,
-              `is_gross` BOOLEAN NOT NULL DEFAULT FALSE,
+              `display_gross` BOOLEAN NOT NULL DEFAULT TRUE,
               `show_saved_percentage` BOOLEAN NOT NULL DEFAULT FALSE,
               `consider_pseudoprice` BOOLEAN NOT NULL DEFAULT FALSE,
               `created_at` DATETIME(3) NOT NULL,

@@ -34,7 +34,7 @@ class RetailPriceRuleEntity extends Entity
     /**
      * @var boolean
      */
-    protected $isGross;
+    protected $displayGross;
 
     /**
      * @var boolean
@@ -86,14 +86,14 @@ class RetailPriceRuleEntity extends Entity
         $this->sourceCustomerGroup = $sourceCustomerGroup;
     }
 
-    public function getIsGross(): bool
+    public function getdisplayGross(): bool
     {
-        return $this->isGross;
+        return $this->displayGross;
     }
 
-    public function setIsGross(bool $isGross): void
+    public function setdisplayGross(bool $displayGross): void
     {
-        $this->isGross = $isGross;
+        $this->displayGross = $displayGross;
     }
 
     public function getShowSavedPercentage(): bool

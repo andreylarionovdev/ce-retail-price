@@ -133,7 +133,7 @@ class ProductPageSubscriber implements EventSubscriberInterface
         /**
          * @var bool
          */
-        $isGross = $matchedSuggestedRetailPriceRule['isGross'];
+        $displayGross = $matchedSuggestedRetailPriceRule['displayGross'];
 
 //        $sourceCustomerGroup->setDisplayGross(true);
 

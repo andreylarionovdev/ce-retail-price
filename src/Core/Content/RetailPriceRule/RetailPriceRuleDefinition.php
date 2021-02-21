@@ -31,7 +31,7 @@ class RetailPriceRuleDefinition extends EntityDefinition
             (new FkField('source_customer_group_id', 'sourceCustomerGroupId', CustomerGroupDefinition::class))->addFlags(new ApiAware(), new Required()),
             (new ManyToOneAssociationField('targetCustomerGroup', 'target_customer_group_id', CustomerGroupDefinition::class))->addFlags(new ApiAware()),
             (new ManyToOneAssociationField('sourceCustomerGroup', 'source_customer_group_id', CustomerGroupDefinition::class))->addFlags(new ApiAware()),
-            new BoolField('is_gross', 'isGross'),
+            new BoolField('display_gross', 'displayGross'),
             new BoolField('show_saved_percentage', 'showSavedPercentage'),
             new BoolField('consider_pseudoprice', 'considerPseudoprice')
         ]);
