@@ -9,7 +9,7 @@
             <tag name="shopware.entity.definition" entity="ce_retail_price_rule" />
         </service>
 
-        <service id="Ce\RetailPrice\Storefront\Page\Product\Subscriber\ProductPageSubscriber">
+        <service id="Ce\RetailPrice\Storefront\Subscriber\RetailPriceRuleSubscriber">
             <argument type="service" id="Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator"/>
             <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Price\ProductPriceDefinitionBuilderInterface"/>
             <argument type="service" id="customer_group.repository"/>

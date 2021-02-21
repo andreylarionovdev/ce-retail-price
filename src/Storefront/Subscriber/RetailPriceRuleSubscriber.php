@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ce\RetailPrice\Storefront\Page\Product\Subscriber;
+namespace Ce\RetailPrice\Storefront\Subscriber;
 
 use Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator;
 use Shopware\Core\Checkout\Cart\Price\Struct\PriceCollection;
@@ -18,7 +18,7 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class ProductPageSubscriber implements EventSubscriberInterface
+class RetailPriceRuleSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
@@ -63,27 +63,6 @@ class ProductPageSubscriber implements EventSubscriberInterface
 
     public function onProductPageLoaded(ProductPageLoadedEvent $event): void
     {
-//        /**
-//         * @var SalesChannelProductEntity
-//         */
-//        $product = $event->getPage()->getProduct();
-//        /**
-//         * @var CalculatedPrice
-//         */
-//        $fromCalculatedPrice = $product->getCalculatedListingPrice()->getFrom();
-//        /**
-//         * @var float
-//         */
-//        $fromPrice = $fromCalculatedPrice->getUnitPrice();
-//        /**
-//         * @var CalculatedPrice
-//         */
-//        $toCalculatedPrice = $product->getCalculatedListingPrice()->getTo();
-//        /**
-//         * @var float
-//         */
-//        $toPrice = $toCalculatedPrice->getUnitPrice();
-
         /**
          * @var SalesChannelContext
          */
@@ -119,8 +98,6 @@ class ProductPageSubscriber implements EventSubscriberInterface
             return;
         }
 
-//        dd($sourceCustomerGroup->getName());
-
         /**
          * @var bool
          */
@@ -135,7 +112,7 @@ class ProductPageSubscriber implements EventSubscriberInterface
          */
         $displayGross = $matchedSuggestedRetailPriceRule['displayGross'];
 
-//        $sourceCustomerGroup->setDisplayGross(true);
+        $sourceCustomerGroup->setDisplayGross($displayGross);
 
         $sourceSalesChannelContext = new SalesChannelContext(
             $context->getContext(),
@@ -153,37 +130,15 @@ class ProductPageSubscriber implements EventSubscriberInterface
             $context->getTotalRounding()
         );
 
-//        dd($context, $sourceSalesChannelContext);
-
+        /**
+         * @var SalesChannelProductEntity
+         */
         $originalProduct = $event->getPage()->getProduct();
-        $toProduct = clone $originalProduct;
+        $productWithRetailPrice = clone $originalProduct;
 
-//        dd($sourceCustomerGroup);
-        dd($originalProduct->getPrices());
+        $this->calculatePrices($sourceSalesChannelContext, $productWithRetailPrice);
 
-        $this->calculatePrices($sourceSalesChannelContext, $originalProduct);
-
-        dd($originalProduct);
-
-//        /**
-//         * @var CalculatedPrice
-//         */
-//        $srpFromCalculatedPrice = $this->priceCalculator->calculate(
-//            $fromPrice,
-//            $product->getCalculatedPrices(),
-//            $sourceSalesChannelContext
-//        );
-//        /**
-//         * @var CalculatedPrice
-//         */
-//        $srpToCalculatedPrice = $this->priceCalculator->calculate(
-//            $toPrice,
-//            $product->getCalculatedPrices(),
-//            $sourceSalesChannelContext
-//        );
-
-//        dd($srpFromCalculatedPrice, $srpToCalculatedPrice);
-//        $event->getPage()->getProduct()->addExtension('ce_suggested_retail_price', );
+        $event->getPage()->getProduct()->addExtension('product_with_retail_price', $productWithRetailPrice);
     }
 
     public function onProductsLoaded(EntityLoadedEvent $event): void
