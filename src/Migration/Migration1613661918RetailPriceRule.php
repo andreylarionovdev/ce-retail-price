@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Ce\SuggestedRetailPrice\Migration;
+namespace Ce\RetailPrice\Migration;
 
 use Doctrine\DBAL\Connection;
 use Shopware\Core\Framework\Migration\MigrationStep;
 
-class Migration1613661918SuggestedRetailPrice extends MigrationStep
+class Migration1613661918RetailPriceRule extends MigrationStep
 {
     public function getCreationTimestamp(): int
     {
@@ -15,7 +15,7 @@ class Migration1613661918SuggestedRetailPrice extends MigrationStep
     public function update(Connection $connection): void
     {
         $connection->executeUpdate('
-            CREATE TABLE IF NOT EXISTS `ce_suggested_retail_price` (
+            CREATE TABLE IF NOT EXISTS `ce_retail_price_rule` (
               `id` BINARY(16) NOT NULL,
               `target_customer_group_id` BINARY(16) NOT NULL,
               `source_customer_group_id` BINARY(16) NOT NULL,

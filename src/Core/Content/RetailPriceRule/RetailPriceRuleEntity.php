@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Ce\SuggestedRetailPrice\Core\Content\SuggestedRetailPrice;
+namespace Ce\RetailPrice\Core\Content\RetailPriceRule;
 
 use Shopware\Core\Checkout\Customer\Aggregate\CustomerGroup\CustomerGroupEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
-class SuggestedRetailPriceEntity extends Entity
+class RetailPriceRuleEntity extends Entity
 {
 
     use EntityIdTrait;

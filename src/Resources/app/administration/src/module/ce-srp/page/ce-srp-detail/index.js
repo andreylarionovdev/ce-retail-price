@@ -29,7 +29,7 @@ Component.register('ce-srp-detail', {
   },
 
   created() {
-    this.repository = this.repositoryFactory.create('ce_suggested_retail_price');
+    this.repository = this.repositoryFactory.create('ce_retail_price_rule');
     this.getEntity();
   },
 

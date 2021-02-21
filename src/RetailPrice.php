@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Ce\SuggestedRetailPrice;
+namespace Ce\RetailPrice;
 
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Kernel;
 
-class SuggestedRetailPrice extends Plugin
+class RetailPrice extends Plugin
 {
     public function uninstall(UninstallContext $context): void
     {
@@ -18,6 +18,6 @@ class SuggestedRetailPrice extends Plugin
 
         $connection = Kernel::getConnection();
 
-        $connection->executeUpdate('DROP TABLE IF EXISTS `ce_suggested_retail_price`');
+        $connection->executeUpdate('DROP TABLE IF EXISTS `ce_retail_price_rule`');
     }
 }

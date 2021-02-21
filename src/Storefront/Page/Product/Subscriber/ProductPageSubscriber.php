@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ce\SuggestedRetailPrice\Storefront\Page\Product\Subscriber;
+namespace Ce\RetailPrice\Storefront\Page\Product\Subscriber;
 
 use Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator;
 use Shopware\Core\Checkout\Cart\Price\Struct\PriceCollection;

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ce\SuggestedRetailPrice\Core\Content\SuggestedRetailPrice;
+namespace Ce\RetailPrice\Core\Content\RetailPriceRule;
 
 use Shopware\Core\Checkout\Customer\Aggregate\CustomerGroup\CustomerGroupDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
@@ -14,9 +14,9 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
-class SuggestedRetailPriceDefinition extends EntityDefinition
+class RetailPriceRuleDefinition extends EntityDefinition
 {
-    public const ENTITY_NAME = 'ce_suggested_retail_price';
+    public const ENTITY_NAME = 'ce_retail_price_rule';
 
     public function getEntityName(): string
     {
@@ -27,9 +27,9 @@ class SuggestedRetailPriceDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new ApiAware(), new PrimaryKey(), new Required()),
-            (new FkField('target_customer_group_id', 'targetCustomerGroupId', CustomerGroupDefinition::class))->addFlags(new PrimaryKey(), new ApiAware(), new Required()),
+            (new FkField('target_customer_group_id', 'targetCustomerGroupId', CustomerGroupDefinition::class))->addFlags(new ApiAware(), new Required()),
             (new FkField('source_customer_group_id', 'sourceCustomerGroupId', CustomerGroupDefinition::class))->addFlags(new ApiAware(), new Required()),
-            (new OneToOneAssociationField('targetCustomerGroup', 'target_customer_group_id', 'id', CustomerGroupDefinition::class))->addFlags(new ApiAware()),
+            (new ManyToOneAssociationField('targetCustomerGroup', 'target_customer_group_id', CustomerGroupDefinition::class))->addFlags(new ApiAware()),
             (new ManyToOneAssociationField('sourceCustomerGroup', 'source_customer_group_id', CustomerGroupDefinition::class))->addFlags(new ApiAware()),
             new BoolField('is_gross', 'isGross'),
             new BoolField('show_saved_percentage', 'showSavedPercentage'),

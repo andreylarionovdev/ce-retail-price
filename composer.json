@@ -1,25 +1,25 @@
 {
-    "name": "ce/suggested-retail-price",
-    "description": "Suggested Retail Price",
+    "name": "ce/retail-price",
+    "description": "Suggested Retail Price, Recommended Retail Price",
     "license": "MIT",
     "authors": [
         {
-            "name": "codeenterprise GmbH",
+            "name": "ce GmbH",
             "role": "Manufacturer"
         }
     ],
     "type": "shopware-platform-plugin",
     "autoload": {
         "psr-4": {
-            "Ce\\SuggestedRetailPrice\\": "src/"
+            "Ce\\RetailPrice\\": "src/"
         }
     },
     "extra": {
-        "shopware-plugin-class": "Ce\\SuggestedRetailPrice\\SuggestedRetailPrice",
-        "copyright": "(c) by codeenterprise GmbH",
+        "shopware-plugin-class": "Ce\\RetailPrice\\RetailPrice",
+        "copyright": "(c) by ce GmbH",
         "label": {
             "de-DE": "UVP für Händler",
-            "en-GB": "SRP for Shopware"
+            "en-GB": "SRP for Retailers"
         }
     }
 }

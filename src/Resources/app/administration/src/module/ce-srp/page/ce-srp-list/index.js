@@ -48,7 +48,7 @@ Component.register('ce-srp-list', {
   },
 
   created() {
-    this.repository = this.repositoryFactory.create('ce_suggested_retail_price');
+    this.repository = this.repositoryFactory.create('ce_retail_price_rule');
 
     const criteria = new Criteria();
     criteria
