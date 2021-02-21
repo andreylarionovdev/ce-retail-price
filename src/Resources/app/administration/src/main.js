@@ -1,1 +1,1 @@
-import './module/ce-srp';
+import './module/ce-retail-price';

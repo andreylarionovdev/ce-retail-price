@@ -1,32 +1,31 @@
-import './page/ce-srp-list';
-import './page/ce-srp-detail';
-import './page/ce-srp-create';
+import './page/ce-retail-price-list';
+import './page/ce-retail-price-detail';
+import './page/ce-retail-price-create';
 
-Shopware.Module.register('ce-srp', {
+Shopware.Module.register('ce-retail-price', {
   type: 'plugin',
   name: 'Suggested Retail Price',
   color: '#cb45ff',
-  icon: 'default-building-home',
   title: 'Suggested Retail Price',
   description: 'Manage Suggested Retail Price',
 
   routes: {
     list: {
-      component: 'ce-srp-list',
+      component: 'ce-retail-price-list',
       path: 'list'
     },
     detail: {
-      component: 'ce-srp-detail',
+      component: 'ce-retail-price-detail',
       path: 'detail/:id',
       meta: {
-        parentPath: 'ce.srp.list'
+        parentPath: 'ce.retail.price.list'
       }
     },
     create: {
-      component: 'ce-srp-create',
+      component: 'ce-retail-price-create',
       path: 'create',
       meta: {
-        parentPath: 'ce.srp.list'
+        parentPath: 'ce.retail.price.list'
       }
     },
   },
@@ -34,8 +33,8 @@ Shopware.Module.register('ce-srp', {
   navigation: [{
     label: 'Suggested Retail Price',
     color: '#ff3d58',
-    path: 'ce.srp.list',
-    icon: 'default-shopping-paper-bag-product',
+    path: 'ce.retail.price.list',
+    icon: 'default-building-home',
     position: 100
   }]
 });

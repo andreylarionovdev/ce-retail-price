@@ -1,9 +1,9 @@
-import template from './ce-srp-list.html.twig';
+import template from './ce-retail-price-list.html.twig';
 
 const { Component, Mixin } = Shopware;
 const { Criteria } = Shopware.Data;
 
-Component.register('ce-srp-list', {
+Component.register('ce-retail-price-list', {
   template,
 
   inject: [

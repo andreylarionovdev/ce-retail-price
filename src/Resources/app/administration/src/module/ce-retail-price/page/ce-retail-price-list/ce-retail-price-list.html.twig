@@ -1,22 +1,22 @@
-{% block ce_srp_list %}
-    <sw-page class="ce-srp-list">
-        {% block ce_srp_list_smart_bar_actions %}
+{% block ce_retail_price_list %}
+    <sw-page class="ce-retail-price-list">
+        {% block ce_retail_price_list_smart_bar_actions %}
             <template slot="smart-bar-actions">
-                <sw-button variant="primary" :routerLink="{ name: 'ce.srp.create' }">
+                <sw-button variant="primary" :routerLink="{ name: 'ce.retail.price.create' }">
                     Add Row
                 </sw-button>
             </template>
         {% endblock %}
 
         <template slot="content">
-            {% block ce_srp_list_content %}
+            {% block ce_retail_price_list_content %}
                 <sw-entity-listing
                     v-if="entities"
                     :items="entities"
                     :repository="repository"
                     :showSelection="false"
                     :columns="columns"
-                    detailRoute="ce.srp.detail">
+                    detailRoute="ce.retail.price.detail">
                 </sw-entity-listing>
             {% endblock %}
         </template>
