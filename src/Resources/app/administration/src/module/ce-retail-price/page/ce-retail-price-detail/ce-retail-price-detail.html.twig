@@ -2,7 +2,7 @@
     <sw-page class="ce-retail-price-detail">
         <template slot="smart-bar-actions">
             <sw-button :routerLink="{ name: 'ce.retail.price.list' }">
-                Cancel
+                {{ $t('ce-retail-price.detail.cancelButtonText') }}
             </sw-button>
 
             <sw-button-process
@@ -11,7 +11,7 @@
                 variant="primary"
                 @process-finish="saveFinish"
                 @click="onClickSave">
-                Save
+                {{ $t('ce-retail-price.detail.saveButtonText') }}
             </sw-button-process>
         </template>
 
@@ -20,26 +20,26 @@
                 <sw-card v-if="entity" :isLoading="isLoading">
                     <sw-entity-single-select
                         required
-                        :label="'Target Customer Group'"
+                        :label="$t('ce-retail-price.detail.targetCustomerGroupLabel')"
                         v-model="entity.targetCustomerGroupId"
                         entity="customer_group">
                     </sw-entity-single-select>
                     <sw-entity-single-select
                         required
-                        :label="'Source Customer Group'"
+                        :label="$t('ce-retail-price.detail.sourceCustomerGroupLabel')"
                         v-model="entity.sourceCustomerGroupId"
                         entity="customer_group">
                     </sw-entity-single-select>
                     <sw-switch-field
-                        :label="'Gross'"
+                        :label="$t('ce-retail-price.detail.displayGrossLabel')"
                         v-model="entity.displayGross">
                     </sw-switch-field>
                     <sw-switch-field
-                        :label="'Show saved percentage'"
+                        :label="$t('ce-retail-price.detail.displaySavedPercentageLabel')"
                         v-model="entity.showSavedPercentage">
                     </sw-switch-field>
                     <sw-switch-field
-                        :label="'Consider Pseudoprice'"
+                        :label="$t('ce-retail-price.detail.considerPseudopriceLabel')"
                         v-model="entity.considerPseudoprice">
                     </sw-switch-field>
                 </sw-card>

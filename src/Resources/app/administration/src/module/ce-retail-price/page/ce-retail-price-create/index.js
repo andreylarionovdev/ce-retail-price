@@ -18,7 +18,7 @@ Component.extend('ce-retail-price-create', 'ce-retail-price-detail', {
         this.isLoading = false;
 
         this.createNotificationError({
-          title: 'Unexpected Error!',
+          title: this.$t('ce-retail-price.detail.errorTitle'),
           message: exception
         });
       });

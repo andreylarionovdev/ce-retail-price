@@ -1,6 +1,6 @@
 import template from './ce-retail-price-list.html.twig';
 
-const { Component, Mixin } = Shopware;
+const { Component } = Shopware;
 const { Criteria } = Shopware.Data;
 
 Component.register('ce-retail-price-list', {
@@ -28,21 +28,11 @@ Component.register('ce-retail-price-list', {
       return [{
         property: 'targetCustomerGroup.name',
         dataIndex: 'targetCustomerGroup.name',
-        // naturalSorting: true,
-        label: 'Target Customer Group',
-        // allowResize: true,
-        // inlineEdit: 'string',
-        // align: 'right',
-        // useCustomSort: true,
+        label: this.$t('ce-retail-price.list.columnTargetCustomerGroup'),
       }, {
         property: 'sourceCustomerGroup.name',
         dataIndex: 'sourceCustomerGroup.name',
-        // naturalSorting: true,
-        label: 'Source Customer Group',
-        // allowResize: true,
-        // inlineEdit: 'string',
-        // align: 'right',
-        // useCustomSort: true,
+        label: this.$t('ce-retail-price.list.columnSourceCustomerGroup'),
       }];
     }
   },
@@ -51,6 +41,7 @@ Component.register('ce-retail-price-list', {
     this.repository = this.repositoryFactory.create('ce_retail_price_rule');
 
     const criteria = new Criteria();
+
     criteria
       .addAssociation('targetCustomerGroup')
       .addAssociation('sourceCustomerGroup');

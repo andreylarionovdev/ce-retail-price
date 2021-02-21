@@ -1,0 +1,26 @@
+{
+    "ce-retail-price": {
+        "general": {
+            "mainMenuItemGeneral": "UVP für Händler",
+            "descriptionTextModule": "Verwalte die UVP hier"
+        },
+        "list": {
+            "addButtonText": "Neue Relation hinzufügen",
+            "columnTargetCustomerGroup": "Anzeigen für Kundengruppe",
+            "columnSourceCustomerGroup": "Kundengruppe für Preis",
+            "columnDisplayGross": "Brutto UVP",
+            "columnShowSavedPercentage": "Gesparte Prozent anzeigen",
+            "columnConsiderPseudoprice": "Pseudopreis berücksichtigen"
+        },
+        "detail": {
+            "targetCustomerGroupLabel": "Anzeigen für Kundengruppe",
+            "sourceCustomerGroupLabel": "UVP Preise von Kundengruppe nutzen",
+            "displayGrossLabel": "Brutto UVP anzeigen",
+            "displaySavedPercentageLabel": "Gesparte Prozent anzeigen",
+            "considerPseudopriceLabel": "Pseudopreis berücksichtigen",
+            "cancelButtonText": "Abbrechen",
+            "saveButtonText": "Speichern",
+            "errorTitle": "Fehler beim Speichern der Relation"
+        }
+    }
+}

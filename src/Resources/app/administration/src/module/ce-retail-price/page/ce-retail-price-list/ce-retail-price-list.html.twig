@@ -3,7 +3,7 @@
         {% block ce_retail_price_list_smart_bar_actions %}
             <template slot="smart-bar-actions">
                 <sw-button variant="primary" :routerLink="{ name: 'ce.retail.price.create' }">
-                    Add Row
+                    {{ $t('ce-retail-price.list.addButtonText') }}
                 </sw-button>
             </template>
         {% endblock %}

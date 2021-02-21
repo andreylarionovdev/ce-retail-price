@@ -54,7 +54,7 @@ Component.register('ce-retail-price-detail', {
         }).catch((exception) => {
         this.isLoading = false;
         this.createNotificationError({
-          title: 'Unexpected Error!',
+          title: this.$t('ce-retail-price.detail.errorTitle'),
           message: exception
         });
       });

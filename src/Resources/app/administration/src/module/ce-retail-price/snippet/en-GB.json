@@ -1,0 +1,26 @@
+{
+    "ce-retail-price": {
+        "general": {
+            "mainMenuItemGeneral": "SRP for Retailers",
+            "descriptionTextModule": "Manage SRP"
+        },
+        "list": {
+            "addButtonText": "Add new rule",
+            "columnTargetCustomerGroup": "Display for Customer Group",
+            "columnSourceCustomerGroup": "Customer Group for Price",
+            "columnDisplayGross": "Display Gross",
+            "columnShowSavedPercentage": "Show Saved Percentage",
+            "columnConsiderPseudoprice": "Consider Pseudopreis"
+        },
+        "detail": {
+            "targetCustomerGroupLabel": "Display for Customer Group",
+            "sourceCustomerGroupLabel": "Customer Group for Price",
+            "displayGrossLabel": "Display Gross",
+            "displaySavedPercentageLabel": "Show Saved Percentage",
+            "considerPseudopriceLabel": "Consider Pseudopreis",
+            "cancelButtonText": "Cancel",
+            "saveButtonText": "Save",
+            "errorTitle": "Error by saving rule"
+        }
+    }
+}
