@@ -15,11 +15,11 @@ Refresh plugin list and install plugin using `bin/console` from root development
 #### Using administration panel
 Login to the Shopware 6 admin panel and enable plugin manually.
 
-![Activate plugin](https://raw.githubusercontent.com/andreylarionovdev/ce-retail-price/media/img/plugins.png?token=AMWNKMT373QIF6XWWMRZVUDAGL5O2)
+![Activate plugin](https://drive.google.com/uc?export=view&id=1wN5QUs7afakTzY2EliGc62zJIqLbZ98z)
 *Activate Plugin*
 
-![Create new rule](https://raw.githubusercontent.com/andreylarionovdev/ce-retail-price/media/img/create.png?token=AMWNKMQTH4SVYIIQE3WYPXLAGL5YO)
+![Create new rule](https://drive.google.com/uc?export=view&id=1jncR9KH9OdefQK4ducdKJAUKz-8Rb7W8)
 *Create new rule*
 
-![Rules list](https://raw.githubusercontent.com/andreylarionovdev/ce-retail-price/media/img/list.png?token=AMWNKMVFZY4R2TUYZHVT64DAGL55K)
+![Rules list](https://drive.google.com/uc?export=view&id=1MkNVndN_fuqX3TWsz-HyeMCfT-paliKR)
 *Rules list*
