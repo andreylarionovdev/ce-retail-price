@@ -4,83 +4,64 @@
     {{ parent() }}
 
     {% if page.product.extensions.product_with_retail_price %}
-        <h3>UVP:</h3>
+        {% set product_with_retail_price = page.product.extensions.product_with_retail_price %}
+        <h3 class="srp-product-block-title">{{ "detail.buyWidgetTitle"|trans|sw_sanitize }}:</h3>
         {% if product_with_retail_price.calculatedPrices|length > 1 %}
-            {% block page_product_detail_price_block %}
-                <div class="product-block-prices">
-                    {% block page_product_detail_price_block_table %}
-                        <table class="table table-sm table-bordered product-block-prices-table">
-                            {% block page_product_detail_price_block_table_head %}
-                                <thead class="product-block-prices-head">
-                                    {% block page_product_detail_price_block_table_head_inner %}
-                                        <tr class="product-block-prices-row">
-                                            <th scope="col" class="product-block-prices-cell">
-                                                {{ "detail.dataColumnQuantity"|trans|sw_sanitize }}
-                                            </th>
-                                            <th scope="col" class="product-block-prices-cell">
-                                                {{ "detail.dataColumnPrice"|trans|sw_sanitize }}
-                                            </th>
-                                            {% if product_with_retail_price.calculatedPrice.referencePrice %}
-                                                <th scope="col" class="product-block-prices-cell">
-                                                    {{ "detail.dataColumnReferencePrice"|trans|sw_sanitize }}
-                                                </th>
-                                            {% endif %}
-                                        </tr>
-                                    {% endblock %}
-                                </thead>
-                            {% endblock %}
+            <div class="product-block-prices">
+                <table class="table table-sm table-bordered product-block-prices-table">
+                    <thead class="product-block-prices-head">
+                        <tr class="product-block-prices-row">
+                            <th scope="col" class="product-block-prices-cell">
+                                {{ "detail.dataColumnQuantity"|trans|sw_sanitize }}
+                            </th>
+                            <th scope="col" class="product-block-prices-cell">
+                                {{ "detail.dataColumnPrice"|trans|sw_sanitize }}
+                            </th>
+                            {% if product_with_retail_price.calculatedPrice.referencePrice %}
+                                <th scope="col" class="product-block-prices-cell">
+                                    {{ "detail.dataColumnReferencePrice"|trans|sw_sanitize }}
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
 
-                            {% block page_product_detail_price_block_table_body %}
-                                <tbody class="product-block-prices-body">
-                                    {% block page_product_detail_price_block_table_body_inner %}
-                                        {% for price in product_with_retail_price.calculatedPrices %}
-                                            {% block page_product_detail_price_block_table_body_row %}
-                                                <tr class="product-block-prices-row"
-                                                    itemprop="offers" itemscope
-                                                    itemtype="https://schema.org/Offer">
+                    <tbody class="product-block-prices-body">
+                        {% for price in product_with_retail_price.calculatedPrices %}
+                            <tr class="product-block-prices-row"
+                                itemprop="offers" itemscope
+                                itemtype="https://schema.org/Offer">
 
-                                                    {% block page_product_detail_price_block_table_body_cell_quantity %}
-                                                        <th scope="row" class="product-block-prices-cell">
-                                                            <meta itemprop="priceCurrency" content="{{ page.header.activeCurrency.id }}" />
-                                                            <meta itemprop="price" content="{{ price.unitPrice }}" />
-                                                            <link itemprop="availability" href="https://schema.org/InStock" />
+                                <th scope="row" class="product-block-prices-cell">
+                                    <meta itemprop="priceCurrency" content="{{ page.header.activeCurrency.id }}" />
+                                    <meta itemprop="price" content="{{ price.unitPrice }}" />
+                                    <link itemprop="availability" href="https://schema.org/InStock" />
 
-                                                            {% if loop.last %}
-                                                                {{ "detail.priceDataInfoFrom"|trans|sw_sanitize }}
-                                                                <span class="product-block-prices-quantity">{{ price.quantity }}</span>
+                                    {% if loop.last %}
+                                        {{ "detail.priceDataInfoFrom"|trans|sw_sanitize }}
+                                        <span class="product-block-prices-quantity">{{ price.quantity }}</span>
 
-                                                            {% else %}
-                                                                {{ "detail.priceDataInfoUntil"|trans|sw_sanitize }}
-                                                                <span class="product-block-prices-quantity">{{ price.quantity }}</span>
-                                                            {% endif %}
-                                                        </th>
-                                                    {% endblock %}
+                                    {% else %}
+                                        {{ "detail.priceDataInfoUntil"|trans|sw_sanitize }}
+                                        <span class="product-block-prices-quantity">{{ price.quantity }}</span>
+                                    {% endif %}
+                                </th>
 
-                                                    {% block page_product_detail_price_block_table_body_cell_price %}
-                                                        <td class="product-block-prices-cell">
-                                                            {% sw_include '@Storefront/storefront/component/product/block-price.html.twig' with {
-                                                                price: price
-                                                            } only %}
-                                                        </td>
-                                                    {% endblock %}
+                                <td class="product-block-prices-cell">
+                                    {% sw_include '@Storefront/storefront/component/product/block-price.html.twig' with {
+                                        price: price
+                                    } only %}
+                                </td>
 
-                                                    {% block page_product_detail_price_block_table_body_cell_reference_price %}
-                                                        {% if price.referencePrice is not null %}
-                                                            <td class="product-block-prices-cell">
-                                                                {{ price.referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }} {{ price.referencePrice.unitName }}
-                                                            </td>
-                                                        {% endif %}
-                                                    {% endblock %}
-                                                </tr>
-                                            {% endblock %}
-                                        {% endfor %}
-                                    {% endblock %}
-                                </tbody>
-                            {% endblock %}
-                        </table>
-                    {% endblock %}
-                </div>
-            {% endblock %}
+                                {% if price.referencePrice is not null %}
+                                    <td class="product-block-prices-cell">
+                                        {{ price.referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }} {{ price.referencePrice.unitName }}
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% else %}
             {% set price = product_with_retail_price.calculatedPrice %}
 
@@ -91,7 +72,6 @@
             <meta itemprop="price"
                   content="{{ price.unitPrice }}">
 
-            {% block page_product_detail_price_content %}
                 {% set listPrice = price.listPrice %}
 
                 <p class="product-detail-price{% if listPrice.percentage > 0 %} with-list-price{% endif %}">
@@ -99,50 +79,34 @@
                 </p>
 
                 {% if listPrice.percentage > 0 %}
-                    {% block page_product_detail_was_price %}
+                    <span class="list-price-badge">&#37;</span>
 
-                        {% block page_product_detail_was_price_badge %}
-                            <span class="list-price-badge">&#37;</span>
-                        {% endblock %}
-
-                        {% block page_product_detail_was_price_wrapper %}
-                            <span class="product-detail-list-price-wrapper">
-                                {{"listing.beforeListPrice"|trans|trim}}
-                                <span {% if not ("listing.beforeListPrice"|trans|length > 0 or "listing.afterListPrice"|trans|length > 0) %}class="list-price-price"{% endif %}>
-                                    {{ listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}
-                                </span>
-                                {{"listing.afterListPrice"|trans|trim}}
-                                <span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': listPrice.percentage })|sw_sanitize }}</span>
-                            </span>
-                        {% endblock %}
-                    {% endblock %}
+                    <span class="product-detail-list-price-wrapper">
+                        {{"listing.beforeListPrice"|trans|trim}}
+                        <span {% if not ("listing.beforeListPrice"|trans|length > 0 or "listing.afterListPrice"|trans|length > 0) %}class="list-price-price"{% endif %}>
+                            {{ listPrice.price|currency }}{{ "general.star"|trans|sw_sanitize }}
+                        </span>
+                            {{"listing.afterListPrice"|trans|trim}}
+                        <span class="list-price-percentage">{{ "detail.listPricePercentage"|trans({'%price%': listPrice.percentage })|sw_sanitize }}</span>
+                    </span>
                 {% endif %}
-            {% endblock %}
 
             {% if product_with_retail_price.purchaseUnit %}
-                {% block page_product_detail_price_unit %}
-                    <div class="product-detail-price-unit">
-                        {% block page_product_detail_price_unit_label %}
-                            <span class="price-unit-label">
-                                {{ "detail.priceUnitName"|trans|sw_sanitize }}
-                            </span>
-                        {% endblock %}
+                <div class="product-detail-price-unit">
+                    <span class="price-unit-label">
+                        {{ "detail.priceUnitName"|trans|sw_sanitize }}
+                    </span>
 
-                        {% block page_product_detail_price_unit_content %}
-                            <span class="price-unit-content">
-                                {{ product_with_retail_price.purchaseUnit }} {{ product_with_retail_price.unit.name }}
-                            </span>
-                        {% endblock %}
+                    <span class="price-unit-content">
+                        {{ product_with_retail_price.purchaseUnit }} {{ product_with_retail_price.unit.name }}
+                    </span>
 
-                        {% if price.referencePrice is not null %}
-                            {% block page_product_detail_price_unit_reference_content %}
-                                <span class="price-unit-reference-content">
-                                    ({{ price.referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }} {{ price.referencePrice.unitName }})
-                                </span>
-                            {% endblock %}
-                        {% endif %}
-                    </div>
-                {% endblock %}
+                    {% if price.referencePrice is not null %}
+                        <span class="price-unit-reference-content">
+                            ({{ price.referencePrice.price|currency }}{{ "general.star"|trans|sw_sanitize }} / {{ price.referencePrice.referenceUnit }} {{ price.referencePrice.unitName }})
+                        </span>
+                    {% endif %}
+                </div>
             {% endif %}
         {% endif %}
     {% endif %}

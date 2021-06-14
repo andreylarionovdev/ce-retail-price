@@ -22,6 +22,11 @@ class RetailPriceRuleDefinition extends EntityDefinition
         return self::ENTITY_NAME;
     }
 
+    public function getEntityClass(): string
+    {
+        return RetailPriceRuleEntity::class;
+    }
+
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
